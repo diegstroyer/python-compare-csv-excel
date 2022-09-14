@@ -2,6 +2,19 @@ from pathlib import Path
 import chardet
 import pandas as pd
 
+'''
+Checks differences between two excel or CSV files with a same index column data (required).
+
+Usage:
+    excel_diff(path_OLD, path_NEW, index_col)
+    csv_diff(path_OLD, path_NEW, index_col, delimiter=';', encoding='ISO-8859-1')
+
+It also includes other useful features, for reading CSV and Excel files
+
+Enjoi.
+
+'''
+
 # * Autodetect file encoding
 def file_encoding(filename):    
     rawdata = open(filename, 'rb').readline()
@@ -39,7 +52,7 @@ def read_csv_to_df(csv_doc, index_col, delimiter, encoding):
     csv_df = csv_df.loc[:, ~csv_df.columns.str.contains('^Unnamed:')]
     return csv_df
 
-# * Fromat EXCEL
+# * Format EXCEL
 def row_format_excel(row_list, df_checked, worksheet, dimensions, format):
     for value in row_list:
         rowvalue = df_checked.index.get_loc(value)

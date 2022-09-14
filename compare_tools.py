@@ -4,6 +4,8 @@ import pandas as pd
 
 '''
 Checks differences between two excel or CSV files with a same index column data (required).
+Both functions create a column ("STATUS") that indicates whether there has been a change
+in that row (added, removed or changed).
 
 Usage:
     excel_diff(path_OLD, path_NEW, index_col)
